@@ -30,7 +30,7 @@ if (PEERS.length > 0) {
 p2pServer.on('message_received', (message) => {
     if (message.type === 'TRANSACTION') {
         // Gelen işlemi havuza ekle
-        mempool.addTransaction(message.payload);
+        const added = mempool.addTransaction(message.payload);
 
         // Havuzda 3 veya daha fazla işlem varsa ve madencilik yapmıyorsak başla!
         if (added && mempool.getPendingTransactions().length >= 3 && !miner.isMining) {
