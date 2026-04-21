@@ -1,12 +1,13 @@
-import { WebSocketServer, WebSocket } from "ws";
+import { WebSocketServer, WebSocket, EventEmitter } from "ws";
 import { v4 as uuidv4 } from "uuid";
 
 /**
  * peer-to-Peer Mesh Network Implementation
  * uses Gossip Protocol to broadcast messages across the network.
  */
-export default class P2PNetwork {
+export default class P2PNetwork extends EventEmitter {
     constructor(port) {
+        super();
         this.port = port;
         this.sockets = [];  // connected peers
         this.seenMessages = new Set();  // prevents infinite echo loops
@@ -78,6 +79,7 @@ export default class P2PNetwork {
         }
 
         console.log(`[P2P] Received [${message.type}]:`, message.payload);
+        this.emit('message_received', message);
 
         // relay the message to others
         // broadcast to everyone except the one who sent it to us
