@@ -18,7 +18,8 @@ export default class Mempool {
         }
 
         this.transactions.set(transaction.id, transaction);
-        console.log(`[MEMPOOL] Added TX: ${transaction.id.substring(0, 8)}... | Total pending: ${this.transactions.size}`);
+        const safeId = String(transaction.id);
+        console.log(`[MEMPOOL] Added TX: ${safeId.substring(0, 8)}... | Total pending: ${this.transactions.size}`);
         return true;
     }
 

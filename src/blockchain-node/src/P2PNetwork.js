@@ -1,5 +1,6 @@
-import { WebSocketServer, WebSocket, EventEmitter } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 import { v4 as uuidv4 } from "uuid";
+import { EventEmitter } from 'events';
 
 /**
  * peer-to-Peer Mesh Network Implementation

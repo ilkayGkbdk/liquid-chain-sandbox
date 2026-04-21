@@ -36,7 +36,7 @@ setInterval(() => {
             id: uuidv4(),
             type: "TRANSACTION",
             payload: {
-                id: uuidv4,
+                id: uuidv4(),
                 from: "İlkay",
                 to: "Ahmet",
                 amount: Math.floor(Math.random() * 100),
